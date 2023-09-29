@@ -31,7 +31,7 @@ namespace la_mia_pizzeria_static.Controllers
             using (PizzeriaContext db = new PizzeriaContext())
             {
                 List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
-                return View("Index", pizzas);
+                return View("UserIndex", pizzas);
 
             }
         }

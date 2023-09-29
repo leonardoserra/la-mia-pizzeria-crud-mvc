@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace la_mia_pizzeria_crud.Models
 {
@@ -13,10 +14,11 @@ namespace la_mia_pizzeria_crud.Models
         public string Name { get; set; }
 
         [Column("description")]
-        public string Description { get; set; }
+        [DefaultValue("")]
+        public string? Description { get; set; }
 
         [Column("price")]
-        public float Price { get; set; }
+        public float? Price { get; set; }
 
     }
 }

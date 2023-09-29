@@ -20,6 +20,10 @@ namespace la_mia_pizzeria_crud.Models
 
         [Column("price")]
         public float? Price { get; set; }
+        [Column("image_path")]
+        [DefaultValue("default.png")]
+
+        public string? ImagePath { get; set; }
 
     }
 }

@@ -2,79 +2,86 @@
     Layout = "Admin/_Layout";
 
 }
-@section provaStile{
-    <link rel="stylesheet" href="~/css/provaStile.css"/>
-}
-        <div class="container mt-5 rosso">
+@model List<Pizza>
+
+
+<div class="container mt-5 rosso">
     
-        @*BUTTON OFFCANVAS*@
-        <div class="row pt-3">
-            <div class="col-12 ">
-                <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
-                    Gestisci la tua pagina
-                </button>
-            </div>
-        </div>
-        @*TABELLA*@
-            <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="col-2" scope="col">Immagine</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Descrizione</th>
-                            <th scope="col">Prezzo</th>
-                            <th scope="col">Dettagli</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td>
-                                <img height="70"  src="~/img/pizza_1.jpg" class="card-img-top object-fit-cover"   role="img" focusable="false" alt="La vera Pizza" />
-                            </td>
-
-                            <td>Margheritina</td>
-                            <td>Buona Buona anzi buonissima!</td>
-                            <td>12€</td>
-                            <td><button type="button" class="btn text-dark btn-warning btn-sm btn-outline-secondary">Dettagli</button></td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    @*OFFCANVAS GESTIONE PAGINA*@
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasManagePizza" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Gestione</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div>
-                Gestisci la tua pagina:
-            </div>
-            <div class="d-grid my-3 gap-1">
-                <button class="btn btn-success" type="button">Aggiungi Pizza</button>
-                <button class="btn btn-warning" type="button">Modifica Pizza</button>
-                <button class="btn btn-danger" type="button">Elimina Pizze</button>
-            </div> 
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                    Utente
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Account</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                    <li><a class="dropdown-item" href="@Url.Action("UserIndex","Pizza")">Il Tuo Negozio online</a></li>
-                    <li><a class="dropdown-item" href="#">Impostazioni Avanzate</a></li>
-                </ul>
-            </div>
-
-
-        </div>
+@*BUTTON OFFCANVAS*@
+<div class="row pt-3">
+    <div class="col-12 ">
+        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
+            Gestisci la tua pagina
+        </button>
     </div>
+</div>
+@*TABELLA*@
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-2" scope="col">Immagine</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Pizza pizza in Model)
+                {
+                    <tr>
+                        <td>
+                            <img height="70"  src="@pizza.ImagePath" class="card-img-top object-fit-cover"   role="img" focusable="false" alt="La vera Pizza" />
+                        </td>
+
+                        <td>@pizza.Name</td>
+                        <td>@pizza.Description</td>
+                        <td>@pizza.Price €</td>
+                        <td>
+                            <button type="button" class="btn text-dark btn-warning btn-sm btn-outline-secondary">
+                                <a href="@Url.Action("Details","Pizza", new{id=pizza.Id})">Dettagli</a>
+                            </button>
+                            
+                        </td>
+                            
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*OFFCANVAS GESTIONE PAGINA*@
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasManagePizza" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Gestione</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            Gestisci la tua pagina:
+        </div>
+        <div class="d-grid my-3 gap-1">
+            <button class="btn btn-success" type="button">Aggiungi Pizza</button>
+            <button class="btn btn-warning" type="button">Modifica Pizza</button>
+            <button class="btn btn-danger" type="button">Elimina Pizze</button>
+        </div> 
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Utente
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="@Url.Action("UserIndex","Pizza")">Il Tuo Negozio online</a></li>
+                <li><a class="dropdown-item" href="#">Impostazioni Avanzate</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
 
   
 

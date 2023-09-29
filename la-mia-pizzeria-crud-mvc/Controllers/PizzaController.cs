@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using la_mia_pizzeria_crud.Models;
 using la_mia_pizzeria_crud.Database;
+using System.Diagnostics;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -21,8 +22,8 @@ namespace la_mia_pizzeria_static.Controllers
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
-            return View("Error");
         }
 
         public IActionResult Details(int id)
@@ -33,14 +34,13 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     Pizza pizza = db.Pizzas.Where<Pizza>(p=>p.Id==id).First();
                     return View("Details", pizza);
-
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
-            return View("Error");
         }
 
         public IActionResult UserIndex()
@@ -51,14 +51,17 @@ namespace la_mia_pizzeria_static.Controllers
                 {
                     List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
                     return View("UserIndex", pizzas);
-
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
-            return View("Error");
         }
+       /* public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }*/
     }
 }

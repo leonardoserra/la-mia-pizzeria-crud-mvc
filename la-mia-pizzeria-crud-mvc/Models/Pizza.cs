@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace la_mia_pizzeria_crud.Models
 {
+    [Table("pizzas")]
     public class Pizza 
     {
         [Key]

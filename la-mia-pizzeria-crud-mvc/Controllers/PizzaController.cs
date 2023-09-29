@@ -8,32 +8,57 @@ namespace la_mia_pizzeria_static.Controllers
     {
         public IActionResult Index()
         {
-            using(PizzeriaContext db = new PizzeriaContext())
+            try
             {
-                List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
-                return View("Index",pizzas);
+                using(PizzeriaContext db = new PizzeriaContext())
+                {
+                    List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
+                    return View("Index",pizzas);
+
+                }
 
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return View("Error");
         }
 
         public IActionResult Details(int id)
         {
-            using (PizzeriaContext db = new PizzeriaContext())
+            try
             {
-                Pizza pizza = db.Pizzas.Where<Pizza>(p=>p.Id==id).First();
-                return View("Details", pizza);
+                using (PizzeriaContext db = new PizzeriaContext())
+                {
+                    Pizza pizza = db.Pizzas.Where<Pizza>(p=>p.Id==id).First();
+                    return View("Details", pizza);
 
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return View("Error");
         }
 
         public IActionResult UserIndex()
         {
-            using (PizzeriaContext db = new PizzeriaContext())
-            {
-                List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
-                return View("UserIndex", pizzas);
+            try
+            { 
+                using (PizzeriaContext db = new PizzeriaContext())
+                {
+                    List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
+                    return View("UserIndex", pizzas);
 
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return View("Error");
         }
     }
 }

@@ -9,11 +9,12 @@ namespace la_mia_pizzeria_static.Controllers
     {
         public IActionResult Index()
         {
+            List<Pizza> pizzas = new List<Pizza>();
             try
             {
                 using(PizzeriaContext db = new PizzeriaContext())
                 {
-                    List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
+                    pizzas = db.Pizzas.ToList<Pizza>();
                     return View("Index",pizzas);
 
                 }

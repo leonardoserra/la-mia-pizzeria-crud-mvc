@@ -25,5 +25,7 @@ namespace la_mia_pizzeria_crud.Models
 
         public string? ImagePath { get; set; }
 
+
+        public Pizza() { }
     }
 }

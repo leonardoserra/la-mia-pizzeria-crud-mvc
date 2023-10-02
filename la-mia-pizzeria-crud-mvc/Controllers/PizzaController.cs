@@ -66,6 +66,10 @@ namespace la_mia_pizzeria_static.Controllers
           
             using(PizzeriaContext db = new PizzeriaContext())
             {
+                if (newPizza.ImagePath == null)
+                {
+                    newPizza.ImagePath = "/img/default.png";
+                }
                 db.Pizzas.Add(newPizza);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,4 +1,4 @@
-# la-mia-pizzeria-crud-mvc  
+# la-mia-pizzeria-crud-mvc  PARTE 1
 IMPORTANTE: Ricordatevi di sganciare la vostra vecchia repository GIT e di crearne una nuova per questo esercizio, che prosegue il lavoro della pizzeria, dove lo avevate lasciato. Potete eliminare il progetto Razor da questa esercitazione.  
 
 Ciao ragazzi, andiamo avanti con l’applicazione per gestire la nostra pizzeria. Lo scopo di oggi è quello di rendere dinamici i contenuti che abbiamo come html statico nella pagina con la lista delle pizze.  
@@ -6,4 +6,19 @@ Ciao ragazzi, andiamo avanti con l’applicazione per gestire la nostra pizzeria
 - Gestiamo anche la possibilità che non ci siano pizze nell’elenco: in quel caso dobbiamo mostrare un messaggio che indichi all’utente che non ci sono pizze presenti nella nostra applicazione.  
 - Ogni pizza dell’elenco avrà un pulsante che se cliccato ci porterà a una pagina che mostrerà i dettagli di quella singola pizza. Dobbiamo quindi inviare l’id come parametro dell’URL, recuperarlo con la action, caricare i dati della pizza ricercata e passarli come model. La view a quel punto li mostrerà all’utente con la grafica che preferiamo.  
 > Ps. visto che abbiamo cambiato il controller sul quale lavoriamo, ricordiamoci di cambiare anche il “mapping di default” dei controller...altrimenti quale pagina viene caricata se richiamo l’url “/” della nostra webapp?  
-Piccolo dettaglio…ricordatevi che i dati delle pizze devono essere in un database…quindi dobbiamo usare Entity Framework!   
+Piccolo dettaglio…ricordatevi che i dati delle pizze devono essere in un database…quindi dobbiamo usare Entity Framework!
+  
+# la-mia-pizzeria-crud-mvc  PARTE 2
+Ciao ragazzi, nuove implementazioni per la nostra applicazione.  
+Abbiamo la lista delle pizze, abbiamo i dettagli delle pizze...perchè non realizzare la pagina per la creazione di una nuova pizza?  
+- Aggiungiamo quindi tutto il codice necessario per mostrare il form per la creazione di una nuova pizza e per il salvataggio dei dati in tabella tramite Entity Framework.  
+- Nella index creiamo ovviamente il bottone “Crea nuova pizza” che ci porta a questa nuova pagina creata.  
+- Ricordiamoci che l’utente potrebbe sbagliare inserendo dei dati : gestiamo quindi la validazione!  
+  
+Ad esempio verifichiamo che :  
+> i dati della pizza siano tutti presenti  
+> il campi di testo non superino una certa lunghezza  
+> il prezzo abbia un valore valido (ha senso una pizza con prezzo minore o uguale a zero?)  
+  
+BONUS  
+- Prevediamo una validazione in più: vogliamo che la descrizione della pizza contenga almeno 5 parole.  

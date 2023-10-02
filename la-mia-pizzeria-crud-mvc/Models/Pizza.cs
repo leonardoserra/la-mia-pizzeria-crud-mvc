@@ -27,5 +27,13 @@ namespace la_mia_pizzeria_crud.Models
 
 
         public Pizza() { }
+        public Pizza(int id, string name, string? description, float? price, string? imagePath)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Price = price;
+            ImagePath = imagePath;
+        }
     }
 }

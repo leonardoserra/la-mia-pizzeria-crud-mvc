@@ -20,13 +20,14 @@ namespace la_mia_pizzeria_crud.Models
         [DefaultValue("")]
         public string? Description { get; set; }
 
+        [Required(ErrorMessage ="Inserire un prezzo iniziale della Pizza!")]
         [Column("price")]
         [Range(0.5,50,ErrorMessage ="Il prezzo di una pizza puo' variare da 0.5 a 50€")]
         public float? Price { get; set; }
-
+        
         [Url(ErrorMessage = "Inserisci un url valido")]
         [Column("image_path")]
-        [DefaultValue("default.png")]
+        [DefaultValue("/img/default.png")]
         public string? ImagePath { get; set; }
 
         //constructors

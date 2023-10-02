@@ -43,26 +43,16 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
-
-        public IActionResult UserIndex()
-        {
-            try
-            { 
-                using (PizzeriaContext db = new PizzeriaContext())
-                {
-                    List<Pizza> pizzas = db.Pizzas.ToList<Pizza>();
-                    return View("UserIndex", pizzas);
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
-        }
-       /* public IActionResult Error()
+                             
+        public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }*/
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("Create");
+        }
     }
 }

@@ -7,18 +7,21 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace la_mia_pizzeria_static.Controllers
 {
     public class PizzaController : Controller
-    {
+    {   
+        private PizzeriaContext _myDB;
+        public PizzaController(PizzeriaContext db) {
+            _myDB = db;
+        }
         public IActionResult Index()
         {
             List<Pizza> pizzas = new List<Pizza>();
             try
             {
-                using(PizzeriaContext db = new PizzeriaContext())
-                {
-                    pizzas = db.Pizzas.ToList<Pizza>();
-                    return View("Index",pizzas);
+               
+                pizzas = _myDB.Pizzas.ToList<Pizza>();
+                return View("Index",pizzas);
 
-                }
+             
 
             }
             catch(Exception ex)
@@ -32,11 +35,10 @@ namespace la_mia_pizzeria_static.Controllers
         {
             try
             {
-                using (PizzeriaContext db = new PizzeriaContext())
-                {
-                    Pizza pizza = db.Pizzas.Where<Pizza>(p=>p.Id==id).First();
-                    return View("Details", pizza);
-                }
+              
+                Pizza pizza = _myDB.Pizzas.Where<Pizza>(p=>p.Id==id).First();
+                return View("Details", pizza);
+                
             }
             catch (Exception ex)
             {
@@ -65,69 +67,63 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Create", newPizza);
             }
             
-            using(PizzeriaContext db = new PizzeriaContext())
+           
+            //default image se null
+            if (newPizza.ImagePath == null)
             {
-
-                //default image se null
-                if (newPizza.ImagePath == null)
-                {
-                    newPizza.ImagePath = "/img/default.png";
-                }
-                db.Pizzas.Add(newPizza);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                newPizza.ImagePath = "/img/default.png";
             }
+            _myDB.Pizzas.Add(newPizza);
+            _myDB.SaveChanges();
+            return RedirectToAction("Index");
+            
         }
         [HttpGet]
         public IActionResult Update(int id)
         {
-            using(PizzeriaContext db = new PizzeriaContext())
-            {
-                Pizza? pizzaToUpdate = db.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
-                if(pizzaToUpdate == null)
-                    return View("Error");
+           
+            Pizza? pizzaToUpdate = _myDB.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
+            if(pizzaToUpdate == null)
+                return View("Error");
 
-                return View("Update", pizzaToUpdate);
-            }
+            return View("Update", pizzaToUpdate);
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza pizzaReceived)
         {
-            using (PizzeriaContext db = new PizzeriaContext())
-            {
-
-                if (!ModelState.IsValid)
-                    return View("Update", pizzaReceived);
+         
+            if (!ModelState.IsValid)
+                return View("Update", pizzaReceived);
                 
-                Pizza? pizzaToUpdate = db.Pizzas.Find(id);
-                if (pizzaToUpdate == null)
-                    return View("Error");
+            Pizza? pizzaToUpdate = _myDB.Pizzas.Find(id);
+            if (pizzaToUpdate == null)
+                return View("Error");
 
-                EntityEntry<Pizza> updatedPizza = db.Entry(pizzaToUpdate);
-                updatedPizza.CurrentValues.SetValues(pizzaReceived);
-                db.SaveChanges();
+            EntityEntry<Pizza> updatedPizza = _myDB.Entry(pizzaToUpdate);
+            updatedPizza.CurrentValues.SetValues(pizzaReceived);
+            _myDB.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
+            
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
 
-            using (PizzeriaContext db = new PizzeriaContext())
-            {
-                Pizza? pizzaToDelete = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
-                if (pizzaToDelete == null)
-                    return View("Error");
+           
+            Pizza? pizzaToDelete = _myDB.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+            if (pizzaToDelete == null)
+                return View("Error");
                
                
-                db.Pizzas.Remove(pizzaToDelete);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            _myDB.Pizzas.Remove(pizzaToDelete);
+            _myDB.SaveChanges();
+            return RedirectToAction("Index");
+            
         }
 
     }

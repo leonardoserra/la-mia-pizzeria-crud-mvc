@@ -1,8 +1,10 @@
+using la_mia_pizzeria_crud.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<PizzeriaContext, PizzeriaContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

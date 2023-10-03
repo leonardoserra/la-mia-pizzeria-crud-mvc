@@ -94,7 +94,11 @@ namespace la_mia_pizzeria_static.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza pizzaReceived)
         {
-         
+
+            if (pizzaReceived.ImagePath == null)
+            {
+                pizzaReceived.ImagePath = "/img/default.png";
+            }
             if (!ModelState.IsValid)
                 return View("Update", pizzaReceived);
                 

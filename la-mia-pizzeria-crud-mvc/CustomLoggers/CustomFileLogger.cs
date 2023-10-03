@@ -6,7 +6,7 @@ namespace la_mia_pizzeria_static.CustomLoggers
     {
         public void WriteLog(string message)
         {
-            File.AppendAllText("./PizzaControllerLogs.txt", message);
+            File.AppendAllText("./CustomLoggers/pizzaControllerLogs.txt", $"LOG: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")} - {message}\n");
         }
     }
 }

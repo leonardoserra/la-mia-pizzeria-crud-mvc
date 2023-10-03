@@ -11,13 +11,17 @@ namespace la_mia_pizzeria_static.Controllers
     {   
         private PizzeriaContext _db;
         private CustomConsoleLogger _logger;
-        public PizzaController(PizzeriaContext db, CustomConsoleLogger logger) {
+        private CustomFileLogger _fileLogger;
+        public PizzaController(PizzeriaContext db, CustomConsoleLogger logger, CustomFileLogger fileLogger)
+        {
             _db = db;
             _logger = logger;
+            _fileLogger = fileLogger;
         }
         public IActionResult Index()
         {
             _logger.WriteLog($"utente entrato in index");
+            _fileLogger.WriteLog($"utente entrato in index");
             List<Pizza> pizzas = new List<Pizza>();
             try
             {

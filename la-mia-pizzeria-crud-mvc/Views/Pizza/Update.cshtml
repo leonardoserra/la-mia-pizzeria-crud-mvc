@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "Admin/_Layout";
+}
+@model Pizza
+
+
+<div class="container mt-5 rosso">
+    
+    @*BUTTON OFFCANVAS*@
+    <div class="row pt-3">
+        <div class="col-12 ">
+            <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
+                Gestisci la tua pagina
+            </button>
+        </div>
+    </div>
+
+    <form asp-controller="Pizza" asp-action="Update" asp-route="@Model.Id" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Nome</label>
+            <input asp-for="Name" type="text" class="form-control" id="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Descrizione</label>
+            <input asp-for="Description" type="text" class="form-control" id="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Prezzo</label>
+            <input asp-for="Price" type="text" class="form-control" id="Price">
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImagePath" class="form-label">Link immagine</label>
+            <input asp-for="ImagePath" type="text" class="form-control" id="ImagePath">
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+

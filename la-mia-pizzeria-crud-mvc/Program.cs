@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PizzeriaContext, PizzeriaContext>();
-builder.Services.AddScoped<CustomConsoleLogger, CustomConsoleLogger>();
-builder.Services.AddScoped<CustomFileLogger, CustomFileLogger>();
+//builder.Services.AddScoped<ICustomLoggers, CustomConsoleLogger>();
+builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline. 

@@ -30,7 +30,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo</th>
-                        <th scope="col">Dettagli</th>
+                        <th scope="col">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,10 +44,20 @@
                             <td>@pizza.Name</td>
                             <td>@pizza.Description</td>
                             <td>@pizza.Price €</td>
-                            <td>
-                                <button type="button" class="btn text-dark btn-warning btn-sm btn-outline-secondary">
+                            <td class="d-flex justify-content-around p-4" height="100">
+                                <button  type="button" class="btn text-light btn-success btn-sm btn-outline-secondary">
                                     <a class="text-decoration-none text-reset" href="@Url.Action("Details","Pizza", new{id=pizza.Id})">Dettagli</a>
                                 </button>
+                                <button type="button" class="btn text-dark btn-warning btn-sm btn-outline-secondary">
+                                    <a class="text-decoration-none text-reset" href="@Url.Action("Update","Pizza", new{id=pizza.Id})">Modifica</a>
+                                </button>
+                                <div>
+                                <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn text-light btn-danger btn-sm btn-outline-secondary">Elimina</button>
+                                </form>
+
+                                </div>
                             </td>
                         </tr>
                     }

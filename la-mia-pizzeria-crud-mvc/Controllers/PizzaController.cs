@@ -109,8 +109,26 @@ namespace la_mia_pizzeria_static.Controllers
                 updatedPizza.CurrentValues.SetValues(pizzaReceived);
                 db.SaveChanges();
 
-                return View("Update", pizzaToUpdate);
+                return RedirectToAction("Index");
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza? pizzaToDelete = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+                if (pizzaToDelete == null)
+                    return View("Error");
+               
+               
+                db.Pizzas.Remove(pizzaToDelete);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

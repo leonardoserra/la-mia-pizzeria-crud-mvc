@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form asp-controller="Pizza" asp-action="Update" asp-route="@Model.Id" method="post">
+    <form asp-controller="Pizza" asp-action="Update" asp-route-id="@Model.Id" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Nome</label>

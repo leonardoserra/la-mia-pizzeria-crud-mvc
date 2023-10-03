@@ -2,6 +2,7 @@
 using la_mia_pizzeria_crud.Models;
 using la_mia_pizzeria_crud.Database;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -85,6 +86,28 @@ namespace la_mia_pizzeria_static.Controllers
                 Pizza? pizzaToUpdate = db.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
                 if(pizzaToUpdate == null)
                     return View("Error");
+
+                return View("Update", pizzaToUpdate);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Pizza pizzaReceived)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+
+                if (!ModelState.IsValid)
+                    return View("Update", pizzaReceived);
+                
+                Pizza? pizzaToUpdate = db.Pizzas.Find(id);
+                if (pizzaToUpdate == null)
+                    return View("Error");
+
+                EntityEntry<Pizza> updatedPizza = db.Entry(pizzaToUpdate);
+                updatedPizza.CurrentValues.SetValues(pizzaReceived);
+                db.SaveChanges();
 
                 return View("Update", pizzaToUpdate);
             }

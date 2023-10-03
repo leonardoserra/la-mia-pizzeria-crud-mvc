@@ -2,11 +2,11 @@
 
 namespace la_mia_pizzeria_static.CustomLoggers
 {
-    public class CustomConsoleLogger
+    public class CustomFileLogger
     {
         public void WriteLog(string message)
         {
-            Debug.WriteLine($"LOG: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")} - {message}");
+            File.AppendAllText("./PizzaControllerLogs.txt", message);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace la_mia_pizzeria_static.Controllers
         }
         public IActionResult Index()
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente entrato in index");
+            _logger.WriteLog($"utente entrato in index");
             List<Pizza> pizzas = new List<Pizza>();
             try
             {
@@ -37,7 +37,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Details(int id)
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente entrato in dettaglio item {id}");
+            _logger.WriteLog($"utente entrato in dettaglio item {id}");
 
             try
             {
@@ -61,7 +61,7 @@ namespace la_mia_pizzeria_static.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente entrato in creazione");
+            _logger.WriteLog($"utente entrato in creazione");
 
             return View("Create");
         }
@@ -70,7 +70,7 @@ namespace la_mia_pizzeria_static.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Pizza newPizza)
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente prova a creare {newPizza.Name}");
+            _logger.WriteLog($"utente prova a creare {newPizza.Name}");
 
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace la_mia_pizzeria_static.Controllers
             }
             _db.Pizzas.Add(newPizza);
             _db.SaveChanges();
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente ha creato {newPizza.Name}");
+            _logger.WriteLog($"utente ha creato {newPizza.Name}");
 
             return RedirectToAction("Index");
             
@@ -93,7 +93,7 @@ namespace la_mia_pizzeria_static.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente entrato in modifica elemento {id}");
+            _logger.WriteLog($"utente entrato in modifica elemento {id}");
 
             Pizza? pizzaToUpdate = _db.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
             if(pizzaToUpdate == null)
@@ -107,7 +107,7 @@ namespace la_mia_pizzeria_static.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza pizzaReceived)
         {
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente prova a salvare {pizzaReceived.Name} con id {id}");
+            _logger.WriteLog($"utente prova a salvare {pizzaReceived.Name} con id {id}");
 
             if (pizzaReceived.ImagePath == null)
             {
@@ -123,7 +123,7 @@ namespace la_mia_pizzeria_static.Controllers
             EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
             updatedPizza.CurrentValues.SetValues(pizzaReceived);
             _db.SaveChanges();
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente salva {pizzaReceived.Name} con id {id}");
+            _logger.WriteLog($"utente salva {pizzaReceived.Name} con id {id}");
 
 
             return RedirectToAction("Index");
@@ -142,7 +142,7 @@ namespace la_mia_pizzeria_static.Controllers
                
             _db.Pizzas.Remove(pizzaToDelete);
             _db.SaveChanges();
-            _logger.WriteLog($"LOG: {DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")} : utente ha eliminato {pizzaToDelete.Name} con id {id}");
+            _logger.WriteLog($"utente ha eliminato {pizzaToDelete.Name} con id {id}");
 
             return RedirectToAction("Index");
             

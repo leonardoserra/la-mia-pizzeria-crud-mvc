@@ -1,13 +1,15 @@
 using la_mia_pizzeria_crud.Database;
+using la_mia_pizzeria_static.CustomLoggers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PizzeriaContext, PizzeriaContext>();
+builder.Services.AddScoped<CustomConsoleLogger, CustomConsoleLogger>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

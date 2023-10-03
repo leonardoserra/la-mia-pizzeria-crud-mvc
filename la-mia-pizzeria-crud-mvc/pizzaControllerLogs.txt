@@ -1,2 +1,0 @@
-LOG: 03/10/2023 15:39:11 - utente entrato in index
-LOG: 03/10/2023 15:40:05 - utente entrato in index

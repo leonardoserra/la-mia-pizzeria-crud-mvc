@@ -32,6 +32,6 @@ Dobbiamo realizzare :
 - pagina di modifica di una pizza  
 - cancellazione di una pizza cliccando un pulsante presente nella grafica di ogni singolo prodotto mostrato nella lista in homepage  
 **BONUS:**  
-> Implementare i concetti di Dependency Injection visto, per esempio facendo i vostri CustomLoggers. (Riflettete sul discorso dell'importanza delle Interfacce e poi sulla DI applicata nel contesto di web con numerosi controllers)  
-> Provate a semplificare la sintassi dei vostri controller aggiungendo come DI il vostro database.
+> - Implementare i concetti di Dependency Injection visto, per esempio facendo i vostri CustomLoggers. (Riflettete sul discorso dell'importanza delle Interfacce e poi sulla DI applicata nel contesto di web con numerosi controllers)  
+> - Provate a semplificare la sintassi dei vostri controller aggiungendo come DI il vostro database.
 

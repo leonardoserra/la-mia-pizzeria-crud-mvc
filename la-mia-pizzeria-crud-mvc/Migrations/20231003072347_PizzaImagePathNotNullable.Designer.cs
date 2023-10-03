@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using la_mia_pizzeria_crud.Database;
 
@@ -11,9 +12,11 @@ using la_mia_pizzeria_crud.Database;
 namespace la_mia_pizzeria_static.Migrations
 {
     [DbContext(typeof(PizzeriaContext))]
-    partial class PizzeriaContextModelSnapshot : ModelSnapshot
+    [Migration("20231003072347_PizzaImagePathNotNullable")]
+    partial class PizzaImagePathNotNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,8 @@ namespace la_mia_pizzeria_static.Migrations
                         .HasColumnName("description");
 
                     b.Property<string>("ImagePath")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("image_path");
 
                     b.Property<string>("Name")

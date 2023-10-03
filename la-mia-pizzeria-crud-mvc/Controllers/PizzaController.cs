@@ -77,5 +77,17 @@ namespace la_mia_pizzeria_static.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using(PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza? pizzaToUpdate = db.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
+                if(pizzaToUpdate == null)
+                    return View("Error");
+
+                return View("Update", pizzaToUpdate);
+            }
+        }
     }
 }

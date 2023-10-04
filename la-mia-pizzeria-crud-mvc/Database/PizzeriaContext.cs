@@ -6,6 +6,7 @@ namespace la_mia_pizzeria_crud.Database
     public class PizzeriaContext :DbContext
     {
         public DbSet<Pizza> Pizzas { get; set; }
+        public DbSet<Category> categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=db-pizzeria;Integrated Security=True;TrustServerCertificate=True");

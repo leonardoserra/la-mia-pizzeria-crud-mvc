@@ -35,7 +35,8 @@ namespace la_mia_pizzeria_crud.Models
         [StringLength(1000)]
         public string? ImagePath { get; set; } = "/img/default.png";
 
-        public Category category { get; set; }
+        public int? CategoryId { get; set; }
+        public Category? category { get; set; }
 
         //constructors
         public Pizza() { }

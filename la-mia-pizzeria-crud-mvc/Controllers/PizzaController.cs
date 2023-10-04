@@ -71,24 +71,26 @@ namespace la_mia_pizzeria_crud.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza newPizza)
+        public IActionResult Create(PizzaComplexModel receivedData)
         {
-            _logger.WriteLog($"utente prova a creare {newPizza.Name}");
+            _logger.WriteLog($"utente prova a creare {receivedData.Pizza.Name}");
 
             if (!ModelState.IsValid)
             {
-                return View("Create", newPizza);
+                List<Category> categories = _db.Categories.ToList();
+                receivedData.Categories = categories;
+                return View("Create", receivedData);
             }
             
            
             //default image se null
-            if (newPizza.ImagePath == null)
+            if (receivedData.Pizza.ImagePath == null)
             {
-                newPizza.ImagePath = "/img/default.png";
+                receivedData.Pizza.ImagePath = "/img/default.png";
             }
-            _db.Pizzas.Add(newPizza);
+            _db.Pizzas.Add(receivedData.Pizza);
             _db.SaveChanges();
-            _logger.WriteLog($"utente ha creato {newPizza.Name}");
+            _logger.WriteLog($"utente ha creato {receivedData.Pizza.Name}");
 
             return RedirectToAction("Index");
             

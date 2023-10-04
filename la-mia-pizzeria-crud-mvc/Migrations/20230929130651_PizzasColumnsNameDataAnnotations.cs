@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace la_mia_pizzeria_static.Migrations
+namespace la_mia_pizzeria_crud.Migrations
 {
     /// <inheritdoc />
     public partial class PizzasColumnsNameDataAnnotations : Migration

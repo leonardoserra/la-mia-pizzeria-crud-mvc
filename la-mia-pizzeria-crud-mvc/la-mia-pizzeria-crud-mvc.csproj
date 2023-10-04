@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>la_mia_pizzeria_static</RootNamespace>
+    <RootNamespace>la_mia_pizzeria_crud</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

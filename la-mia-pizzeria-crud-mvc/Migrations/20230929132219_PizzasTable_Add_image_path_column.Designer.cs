@@ -9,7 +9,7 @@ using la_mia_pizzeria_crud.Database;
 
 #nullable disable
 
-namespace la_mia_pizzeria_static.Migrations
+namespace la_mia_pizzeria_crud.Migrations
 {
     [DbContext(typeof(PizzeriaContext))]
     [Migration("20230929132219_PizzasTable_Add_image_path_column")]

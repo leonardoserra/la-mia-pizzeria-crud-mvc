@@ -1,8 +1,8 @@
-﻿using la_mia_pizzeria_static.CustomValidations;
+﻿using la_mia_pizzeria_crud.CustomValidations;
+
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 
 namespace la_mia_pizzeria_crud.Models
 {
@@ -29,12 +29,13 @@ namespace la_mia_pizzeria_crud.Models
         [Range(0.5,50,ErrorMessage ="Il prezzo di una pizza puo' variare da 0.5 a 50€")]
         public float? Price { get; set; } 
 
-        
         [Column("image_path")]
         [DefaultValue("/img/default.png")]
         [Url(ErrorMessage = "Inserisci un url valido")]
         [StringLength(1000)]
         public string? ImagePath { get; set; } = "/img/default.png";
+
+        public Category category { get; set; }
 
         //constructors
         public Pizza() { }

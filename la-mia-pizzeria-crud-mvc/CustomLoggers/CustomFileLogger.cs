@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace la_mia_pizzeria_static.CustomLoggers
+namespace la_mia_pizzeria_crud.CustomLoggers
 {
     public class CustomFileLogger : ICustomLogger
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace la_mia_pizzeria_static.CustomValidations
+namespace la_mia_pizzeria_crud.CustomValidations
 {
     public class MoreThan5Words : ValidationAttribute
     {

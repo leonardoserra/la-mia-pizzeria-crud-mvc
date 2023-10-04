@@ -3,9 +3,9 @@ using la_mia_pizzeria_crud.Models;
 using la_mia_pizzeria_crud.Database;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using la_mia_pizzeria_static.CustomLoggers;
+using la_mia_pizzeria_crud.CustomLoggers;
 
-namespace la_mia_pizzeria_static.Controllers
+namespace la_mia_pizzeria_crud.Controllers
 {
     public class PizzaController : Controller
     {   

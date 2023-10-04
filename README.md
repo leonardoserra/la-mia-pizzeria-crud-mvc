@@ -45,5 +45,5 @@ Dobbiamo quindi predisporre tutto il codice necessario per poter collegare una c
 - Tramite migration dobbiamo creare la tabella per le categorie. Popoliamola a mano con i valori elencati precedentemente.  
   
 - Aggiungiamo poi l’informazione della categoria nelle varie pagine :  
-> nei dettagli di una singola pizza (nell’admin) mostrare la sua categoria  
-> quando si crea/modifica una pizza si deve poter selezionare anche la sua categoria  
+> 1.nei dettagli di una singola pizza (nell’admin) mostrare la sua categoria  
+> 2.quando si crea/modifica una pizza si deve poter selezionare anche la sua categoria  

@@ -81,7 +81,6 @@ namespace la_mia_pizzeria_crud.Controllers
                 receivedData.Categories = categories;
                 return View("Create", receivedData);
             }
-            
            
             //default image se null
             if (receivedData.Pizza.ImagePath == null)
@@ -93,7 +92,6 @@ namespace la_mia_pizzeria_crud.Controllers
             _logger.WriteLog($"utente ha creato {receivedData.Pizza.Name}");
 
             return RedirectToAction("Index");
-            
         }
         [HttpGet]
         public IActionResult Update(int id)
@@ -105,8 +103,8 @@ namespace la_mia_pizzeria_crud.Controllers
                 return View("Error");
             List<Category> categories = _db.Categories.ToList();
             PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories };
+
             return View("Update", dataToSent);
-            
         }
 
         [HttpPost]
@@ -122,40 +120,27 @@ namespace la_mia_pizzeria_crud.Controllers
             if (!ModelState.IsValid)
             {
                 List<Category> categories = _db.Categories.ToList();
-                PizzaComplexModel dataToSendBack = new PizzaComplexModel { Pizza = receivedData.Pizza, Categories = categories };
-
-                return View("Update", dataToSendBack);
+                //PizzaComplexModel dataToSendBack = new PizzaComplexModel { Pizza = receivedData.Pizza, Categories = categories };
+                receivedData.Categories = categories;
+                return View("Update", receivedData);
             }
-
 
             Pizza? pizzaToUpdate = _db.Pizzas.Find(id);
             if (pizzaToUpdate == null)
                 return View("Error");
 
-
-            pizzaToUpdate.Name = receivedData.Pizza.Name;
-            pizzaToUpdate.Description = receivedData.Pizza.Description;
-            pizzaToUpdate.Price = receivedData.Pizza.Price;
-            pizzaToUpdate.CategoryId = receivedData.Pizza.CategoryId;
-           
-            //da eccezione perche provi a cambiare la key
-
-            //EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
-            //updatedPizza.CurrentValues.SetValues(receivedData.Pizza);
+            EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
+            updatedPizza.CurrentValues.SetValues(receivedData.Pizza);
             
             _db.SaveChanges();
             _logger.WriteLog($"utente salva {receivedData.Pizza.Name} con id {id}");
 
-
             return RedirectToAction("Index");
-            
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-
-           
             Pizza? pizzaToDelete = _db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
             if (pizzaToDelete == null)
                 return View("Error");
@@ -168,6 +153,5 @@ namespace la_mia_pizzeria_crud.Controllers
             return RedirectToAction("Index");
             
         }
-
     }
 }

@@ -57,8 +57,6 @@ namespace la_mia_pizzeria_crud.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-
         //CRUD
         [HttpGet]
         public IActionResult Create()

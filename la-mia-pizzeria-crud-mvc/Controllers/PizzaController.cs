@@ -14,6 +14,7 @@ namespace la_mia_pizzeria_crud.Controllers
         private ICustomLogger _logger;
         public PizzaController(PizzeriaContext db, ICustomLogger logger)
         {
+            //created with dependence injections
             _db = db;
             _logger = logger;
         }
@@ -40,7 +41,7 @@ namespace la_mia_pizzeria_crud.Controllers
             try
             {
               
-                Pizza pizza = _db.Pizzas.Where<Pizza>(p=>p.Id==id).First();
+                Pizza pizza = _db.Pizzas.Include(pizza=>pizza.Category).Where<Pizza>(p=>p.Id==id).First();
                 return View("Details", pizza);
                 
             }
@@ -56,6 +57,9 @@ namespace la_mia_pizzeria_crud.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
+
+        //CRUD
         [HttpGet]
         public IActionResult Create()
         {

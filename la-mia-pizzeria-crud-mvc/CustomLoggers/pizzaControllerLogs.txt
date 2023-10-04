@@ -81,3 +81,28 @@ LOG: 04/10/2023 14:55:48 - utente entrato in dettaglio item 2
 LOG: 04/10/2023 14:55:59 - utente entrato in index
 LOG: 04/10/2023 14:56:43 - utente entrato in index
 LOG: 04/10/2023 14:56:45 - utente entrato in index
+LOG: 04/10/2023 15:01:37 - utente entrato in index
+LOG: 04/10/2023 15:01:43 - utente entrato in dettaglio item 1
+LOG: 04/10/2023 15:01:46 - utente entrato in modifica elemento 1
+LOG: 04/10/2023 15:01:49 - utente prova a salvare Pizza 1 con id 1
+LOG: 04/10/2023 15:01:49 - utente salva Pizza 1 con id 1
+LOG: 04/10/2023 15:01:49 - utente entrato in index
+LOG: 04/10/2023 15:01:53 - utente entrato in dettaglio item 28
+LOG: 04/10/2023 15:01:54 - utente entrato in index
+LOG: 04/10/2023 15:01:56 - utente entrato in dettaglio item 27
+LOG: 04/10/2023 15:01:57 - utente entrato in index
+LOG: 04/10/2023 15:02:01 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:02:08 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:02:10 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:02:21 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:02:45 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:02:46 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:03:02 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:03:03 - utente entrato in dettaglio item 16
+LOG: 04/10/2023 15:03:05 - utente ha eliminato Pizza Prova con id 16
+LOG: 04/10/2023 15:03:05 - utente entrato in index
+LOG: 04/10/2023 15:03:09 - utente entrato in dettaglio item 17
+LOG: 04/10/2023 15:03:10 - utente ha eliminato Pizza 30 con id 17
+LOG: 04/10/2023 15:03:10 - utente entrato in index
+LOG: 04/10/2023 15:03:22 - utente entrato in dettaglio item 2
+LOG: 04/10/2023 15:03:34 - utente entrato in dettaglio item 2

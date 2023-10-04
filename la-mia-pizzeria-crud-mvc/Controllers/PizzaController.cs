@@ -100,11 +100,12 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente entrato in modifica elemento {id}");
 
-            Pizza? pizzaToUpdate = _db.Pizzas.Where(pizza=>pizza.Id == id).FirstOrDefault();
+            Pizza? pizzaToUpdate = _db.Pizzas.Include(pizza => pizza.Category).Where(pizza=>pizza.Id == id).FirstOrDefault();
             if(pizzaToUpdate == null)
                 return View("Error");
-
-            return View("Update", pizzaToUpdate);
+            List<Category> categories = _db.Categories.ToList();
+            PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories };
+            return View("Update", dataToSent);
             
         }
 

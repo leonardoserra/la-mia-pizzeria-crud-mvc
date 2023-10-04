@@ -34,3 +34,12 @@ LOG: 04/10/2023 12:49:39 - utente entrato in index
 LOG: 04/10/2023 12:49:49 - utente entrato in index
 LOG: 04/10/2023 12:49:51 - utente entrato in creazione
 LOG: 04/10/2023 12:50:00 - utente entrato in index
+LOG: 04/10/2023 12:55:07 - utente entrato in index
+LOG: 04/10/2023 12:55:14 - utente entrato in creazione
+LOG: 04/10/2023 12:56:10 - utente prova a creare Pizza Con Categoria
+LOG: 04/10/2023 12:56:11 - utente ha creato Pizza Con Categoria
+LOG: 04/10/2023 12:56:11 - utente entrato in index
+LOG: 04/10/2023 14:23:23 - utente entrato in index
+LOG: 04/10/2023 14:23:31 - utente entrato in modifica elemento 1
+LOG: 04/10/2023 14:23:36 - utente prova a salvare  con id 0
+LOG: 04/10/2023 14:23:41 - utente entrato in modifica elemento 1

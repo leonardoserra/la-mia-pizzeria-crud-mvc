@@ -64,8 +64,9 @@ namespace la_mia_pizzeria_crud.Controllers
         public IActionResult Create()
         {
             _logger.WriteLog($"utente entrato in creazione");
-
-            return View("Create");
+            List<Category> categories = _db.Categories.ToList();
+            PizzaComplexModel sentData = new PizzaComplexModel {Pizza=new Pizza(), Categories=categories };
+            return View("Create", sentData);
         }
 
         [HttpPost]

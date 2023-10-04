@@ -4,6 +4,7 @@ using la_mia_pizzeria_crud.Database;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using la_mia_pizzeria_crud.CustomLoggers;
+using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_crud.Controllers
 {
@@ -22,12 +23,8 @@ namespace la_mia_pizzeria_crud.Controllers
             List<Pizza> pizzas = new List<Pizza>();
             try
             {
-               
-                pizzas = _db.Pizzas.ToList<Pizza>();
+                pizzas = _db.Pizzas.Include(pizza => pizza.Category).ToList<Pizza>();
                 return View("Index",pizzas);
-
-             
-
             }
             catch(Exception ex)
             {

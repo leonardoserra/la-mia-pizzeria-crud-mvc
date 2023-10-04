@@ -111,25 +111,40 @@ namespace la_mia_pizzeria_crud.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, Pizza pizzaReceived)
+        public IActionResult Update(int id, PizzaComplexModel receivedData)
         {
-            _logger.WriteLog($"utente prova a salvare {pizzaReceived.Name} con id {id}");
+            _logger.WriteLog($"utente prova a salvare {receivedData.Pizza.Name} con id {id}");
 
-            if (pizzaReceived.ImagePath == null)
+            if (receivedData.Pizza.ImagePath == null)
             {
-                pizzaReceived.ImagePath = "/img/default.png";
+                receivedData.Pizza.ImagePath = "/img/default.png";
             }
             if (!ModelState.IsValid)
-                return View("Update", pizzaReceived);
-                
+            {
+                List<Category> categories = _db.Categories.ToList();
+                PizzaComplexModel dataToSendBack = new PizzaComplexModel { Pizza = receivedData.Pizza, Categories = categories };
+
+                return View("Update", dataToSendBack);
+            }
+
+
             Pizza? pizzaToUpdate = _db.Pizzas.Find(id);
             if (pizzaToUpdate == null)
                 return View("Error");
 
-            EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
-            updatedPizza.CurrentValues.SetValues(pizzaReceived);
+
+            pizzaToUpdate.Name = receivedData.Pizza.Name;
+            pizzaToUpdate.Description = receivedData.Pizza.Description;
+            pizzaToUpdate.Price = receivedData.Pizza.Price;
+            pizzaToUpdate.CategoryId = receivedData.Pizza.CategoryId;
+           
+            //da eccezione perche provi a cambiare la key
+
+            //EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
+            //updatedPizza.CurrentValues.SetValues(receivedData.Pizza);
+            
             _db.SaveChanges();
-            _logger.WriteLog($"utente salva {pizzaReceived.Name} con id {id}");
+            _logger.WriteLog($"utente salva {receivedData.Pizza.Name} con id {id}");
 
 
             return RedirectToAction("Index");

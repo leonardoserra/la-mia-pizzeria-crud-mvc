@@ -27,6 +27,16 @@ else
                         <div class="card-item fw-semibold pt-2 text-body-secondary bg-white px-0">
                             Prezzo: @Model.Price€
                         </div>
+                        <div class="card-item fw-semibold pt-2 text-body-secondary bg-white px-0">
+                            @if(Model.Category == null)
+                            {
+                                <span>Categoria: Nessuna categoria assegnata</span>
+                            }
+                            else
+                            {
+                                <span>Categoria: @Model.Category.Name</span>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

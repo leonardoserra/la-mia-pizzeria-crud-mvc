@@ -240,3 +240,87 @@ LOG: 05/10/2023 14:18:59 - utente entrato in modifica elemento 1
 LOG: 05/10/2023 14:19:04 - utente prova a salvare Pizza 1 con id 1
 LOG: 05/10/2023 14:19:05 - utente salva Pizza 1 con id 1
 LOG: 05/10/2023 14:19:05 - utente entrato in index
+LOG: 05/10/2023 14:19:50 - utente entrato in index
+LOG: 05/10/2023 14:19:58 - utente entrato in dettaglio item 2
+LOG: 05/10/2023 14:20:04 - utente entrato in index
+LOG: 05/10/2023 14:20:07 - utente entrato in dettaglio item 1
+LOG: 05/10/2023 14:20:09 - utente entrato in index
+LOG: 05/10/2023 14:20:10 - utente entrato in dettaglio item 2
+LOG: 05/10/2023 14:20:27 - utente entrato in dettaglio item 2
+LOG: 05/10/2023 14:21:07 - utente entrato in index
+LOG: 05/10/2023 14:21:16 - utente entrato in dettaglio item 2
+LOG: 05/10/2023 14:21:19 - utente entrato in index
+LOG: 05/10/2023 14:21:20 - utente entrato in dettaglio item 1
+LOG: 05/10/2023 14:21:23 - utente entrato in index
+LOG: 05/10/2023 14:22:10 - utente entrato in modifica elemento 28
+LOG: 05/10/2023 14:22:25 - utente prova a salvare Pizza Al Cane con id 28
+LOG: 05/10/2023 14:22:25 - utente salva Pizza Al Cane con id 28
+LOG: 05/10/2023 14:22:25 - utente entrato in index
+LOG: 05/10/2023 14:23:21 - utente entrato in modifica elemento 29
+LOG: 05/10/2023 14:23:39 - utente prova a salvare Focaccia con Categoria con id 29
+LOG: 05/10/2023 14:23:39 - utente salva Focaccia con Categoria con id 29
+LOG: 05/10/2023 14:23:39 - utente entrato in index
+LOG: 05/10/2023 14:23:55 - utente entrato in index
+LOG: 05/10/2023 14:23:59 - utente entrato in index
+LOG: 05/10/2023 14:25:11 - utente entrato in index
+LOG: 05/10/2023 14:25:27 - utente entrato in creazione
+LOG: 05/10/2023 14:26:03 - utente prova a creare Nuova Pizza buonissima
+LOG: 05/10/2023 14:26:03 - utente ha creato Nuova Pizza buonissima
+LOG: 05/10/2023 14:26:03 - utente entrato in index
+LOG: 05/10/2023 14:26:13 - utente ha eliminato Nuova Pizza buonissima con id 31
+LOG: 05/10/2023 14:26:13 - utente entrato in index
+LOG: 05/10/2023 14:26:46 - utente entrato in modifica elemento 26
+LOG: 05/10/2023 14:26:57 - utente prova a salvare Pizza Don Giovanni con id 26
+LOG: 05/10/2023 14:26:57 - utente salva Pizza Don Giovanni con id 26
+LOG: 05/10/2023 14:26:57 - utente entrato in index
+LOG: 05/10/2023 14:28:38 - utente entrato in index
+LOG: 05/10/2023 14:28:44 - utente entrato in index
+LOG: 05/10/2023 14:28:50 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:29:27 - utente prova a salvare DefaultPizza con id 14
+LOG: 05/10/2023 14:29:31 - utente prova a salvare DefaultPizza con id 14
+LOG: 05/10/2023 14:29:31 - utente salva DefaultPizza con id 14
+LOG: 05/10/2023 14:29:31 - utente entrato in index
+LOG: 05/10/2023 14:29:37 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:30:25 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:30:34 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:30:37 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:30:41 - utente entrato in index
+LOG: 05/10/2023 14:30:45 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:38:03 - utente entrato in index
+LOG: 05/10/2023 14:38:16 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:38:20 - utente prova a salvare DefaultPizza con id 14
+LOG: 05/10/2023 14:38:20 - utente salva DefaultPizza con id 14
+LOG: 05/10/2023 14:38:20 - utente entrato in index
+LOG: 05/10/2023 14:38:24 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:39:34 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:39:38 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:39:49 - utente entrato in index
+LOG: 05/10/2023 14:39:52 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:39:54 - utente prova a salvare DefaultPizza con id 14
+LOG: 05/10/2023 14:39:54 - utente salva DefaultPizza con id 14
+LOG: 05/10/2023 14:39:54 - utente entrato in index
+LOG: 05/10/2023 14:39:56 - utente entrato in modifica elemento 14
+LOG: 05/10/2023 14:40:12 - utente prova a salvare DefaultPizza con id 14
+LOG: 05/10/2023 14:40:18 - utente entrato in index
+LOG: 05/10/2023 14:40:20 - utente entrato in modifica elemento 27
+LOG: 05/10/2023 14:40:22 - utente entrato in index
+LOG: 05/10/2023 14:40:26 - utente entrato in creazione
+LOG: 05/10/2023 14:40:55 - utente prova a creare Pizza prova img Default
+LOG: 05/10/2023 14:40:56 - utente ha creato Pizza prova img Default
+LOG: 05/10/2023 14:40:56 - utente entrato in index
+LOG: 05/10/2023 14:42:00 - utente entrato in creazione
+LOG: 05/10/2023 14:42:38 - utente entrato in creazione
+LOG: 05/10/2023 14:42:53 - utente prova a creare POLLO
+LOG: 05/10/2023 14:42:53 - utente ha creato POLLO
+LOG: 05/10/2023 14:42:53 - utente entrato in index
+LOG: 05/10/2023 14:42:56 - utente entrato in modifica elemento 33
+LOG: 05/10/2023 14:43:29 - utente prova a salvare POLLO con id 33
+LOG: 05/10/2023 14:43:29 - utente salva POLLO con id 33
+LOG: 05/10/2023 14:43:29 - utente entrato in index
+LOG: 05/10/2023 14:43:34 - utente entrato in modifica elemento 33
+LOG: 05/10/2023 14:43:37 - utente entrato in index
+LOG: 05/10/2023 14:43:38 - utente entrato in creazione
+LOG: 05/10/2023 14:43:43 - utente prova a creare POLLO PIZZA
+LOG: 05/10/2023 14:43:52 - utente prova a creare POLLO PIZZA
+LOG: 05/10/2023 14:43:52 - utente ha creato POLLO PIZZA
+LOG: 05/10/2023 14:43:52 - utente entrato in index

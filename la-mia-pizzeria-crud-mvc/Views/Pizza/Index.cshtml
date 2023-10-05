@@ -55,7 +55,7 @@
                                 }
                             </td>
                             <td>
-                                @if (pizza.Ingredients.Count() <= 0)
+                                @if (pizza.Ingredients.Count() <= 0 || pizza.Ingredients == null)
                                 {
                                     <span>Nessun ingrediente</span>
                                 }

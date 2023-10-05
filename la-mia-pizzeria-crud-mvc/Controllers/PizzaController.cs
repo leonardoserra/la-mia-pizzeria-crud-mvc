@@ -61,7 +61,7 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente entrato in creazione");
             List<Category> categories = _db.Categories.ToList();
-            PizzaComplexModel sentData = new PizzaComplexModel {Pizza=new Pizza(), Categories=categories };
+            PizzaComplexModel sentData = new PizzaComplexModel {Pizza=new Pizza {ImagePath="" }, Categories=categories };
             return View("Create", sentData);
         }
 
@@ -98,8 +98,11 @@ namespace la_mia_pizzeria_crud.Controllers
             if(pizzaToUpdate == null)
                 return View("Error");
             List<Category> categories = _db.Categories.ToList();
-            PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories };
 
+            if (pizzaToUpdate.ImagePath == "/img/default.png")
+                pizzaToUpdate.ImagePath = "";
+
+            PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories };
             return View("Update", dataToSent);
         }
 
@@ -109,17 +112,15 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente prova a salvare {receivedData.Pizza.Name} con id {id}");
 
-            if (receivedData.Pizza.ImagePath == null)
-            {
-                receivedData.Pizza.ImagePath = "/img/default.png";
-            }
             if (!ModelState.IsValid)
             {
                 List<Category> categories = _db.Categories.ToList();
-                //PizzaComplexModel dataToSendBack = new PizzaComplexModel { Pizza = receivedData.Pizza, Categories = categories };
+
                 receivedData.Categories = categories;
                 return View("Update", receivedData);
             }
+            if (receivedData.Pizza.ImagePath == null || receivedData.Pizza.ImagePath == "")
+                receivedData.Pizza.ImagePath = "/img/default.png";
 
             Pizza? pizzaToUpdate = _db.Pizzas.Find(id);
             if (pizzaToUpdate == null)

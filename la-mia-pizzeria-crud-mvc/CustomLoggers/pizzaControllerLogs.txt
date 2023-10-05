@@ -330,3 +330,6 @@ LOG: 05/10/2023 15:25:21 - utente entrato in creazione
 LOG: 05/10/2023 15:25:54 - utente entrato in creazione
 LOG: 05/10/2023 15:26:05 - utente entrato in creazione
 LOG: 05/10/2023 15:26:12 - utente entrato in creazione
+LOG: 05/10/2023 15:32:54 - utente entrato in index
+LOG: 05/10/2023 15:33:01 - utente entrato in creazione
+LOG: 05/10/2023 15:33:05 - utente prova a creare 

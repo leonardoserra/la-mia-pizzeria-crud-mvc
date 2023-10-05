@@ -86,7 +86,18 @@ namespace la_mia_pizzeria_crud.Controllers
             if (!ModelState.IsValid)
             {
                 List<Category> categories = _db.Categories.ToList();
+                List<Ingredient> allIngredients = _db.Ingredients.ToList();
+                List<SelectListItem> ingredientsToSend = new();
+                foreach (Ingredient ingredient in allIngredients)
+                {
+                    ingredientsToSend.Add(
+                        new SelectListItem { 
+                            Text = ingredient.Name,
+                            Value = ingredient.Id.ToString(),
+                        });
+                }
                 receivedData.Categories = categories;
+                receivedData.Ingredients = ingredientsToSend;
                 return View("Create", receivedData);
             }
            

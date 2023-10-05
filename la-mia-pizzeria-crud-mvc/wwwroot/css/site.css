@@ -1,9 +1,11 @@
 html {
   font-size: 14px;
 }
-
+._my-site-font-size {
+    font-size: 0.8rem;
+}
 @media (min-width: 768px) {
-  html {
+    html {
     font-size: 16px;
   }
 }

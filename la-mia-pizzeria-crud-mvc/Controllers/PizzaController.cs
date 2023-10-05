@@ -25,6 +25,7 @@ namespace la_mia_pizzeria_crud.Controllers
             try
             {
                 pizzas = _db.Pizzas.Include(pizza => pizza.Category).Include(pizza => pizza.Ingredients).ToList<Pizza>();
+                
                 return View("Index",pizzas);
             }
             catch(Exception ex)

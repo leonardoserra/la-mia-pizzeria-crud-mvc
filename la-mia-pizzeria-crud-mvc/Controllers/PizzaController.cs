@@ -100,12 +100,14 @@ namespace la_mia_pizzeria_crud.Controllers
                 receivedData.Ingredients = ingredientsToSend;
                 return View("Create", receivedData);
             }
+
            
             //default image se null
             if (receivedData.Pizza.ImagePath == null)
             {
                 receivedData.Pizza.ImagePath = "/img/default.png";
             }
+
             _db.Pizzas.Add(receivedData.Pizza);
             _db.SaveChanges();
             _logger.WriteLog($"utente ha creato {receivedData.Pizza.Name}");

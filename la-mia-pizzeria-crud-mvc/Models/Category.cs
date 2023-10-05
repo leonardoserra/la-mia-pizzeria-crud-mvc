@@ -7,13 +7,14 @@ namespace la_mia_pizzeria_crud.Models
     public class Category
     {
         [Key]
+        [Column("id")]
         public int Id { get; set; }
 
-
+        [Column("name")]
         [Required(ErrorMessage ="Richiesto il nome della categoria")]
         [StringLength(50, ErrorMessage ="Massimo 50 caratteri")]
         public string Name { get; set; }
-
+        [Column("pizzas")]
         List<Pizza>? Pizzas { get; set; }
 
         public Category() { }   

@@ -35,9 +35,13 @@ namespace la_mia_pizzeria_crud.Models
         [StringLength(1000)]
         public string? ImagePath { get; set; } = "/img/default.png";
 
+        [Column("category_id")]
         public int? CategoryId { get; set; }
+
+        [Column("category")]
         public Category? Category { get; set; }
 
+        [Column("ingredients")]
         public List<Ingredient>? Ingredients { get; set; }
 
         //constructors

@@ -44,6 +44,23 @@ else
                                 <span>Categoria: @Model.Category.Name</span>
                             }
                         </div>
+                        <div class="card-item fw-semibold pt-2 text-body-secondary bg-white px-0">
+                            <div>Ingredienti:</div>
+                            @if (Model.Ingredients.Count() <= 0 && Model.Ingredients == null)
+                            {
+                                <span>Nessun ingrediente</span>
+                            }
+                            else
+                            {
+                                <h5></h5>
+                                <ul class="list-unstyled">
+                                    @foreach (Ingredient ingredient in Model.Ingredients)
+                                    {
+                                        <li>- @ingredient.Name</li>
+                                    }
+                                </ul>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

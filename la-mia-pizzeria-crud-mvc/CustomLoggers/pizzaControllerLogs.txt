@@ -229,3 +229,14 @@ LOG: 05/10/2023 13:20:53 - utente entrato in index
 LOG: 05/10/2023 13:21:30 - utente entrato in index
 LOG: 05/10/2023 13:23:10 - utente entrato in index
 LOG: 05/10/2023 13:23:18 - utente entrato in index
+LOG: 05/10/2023 14:10:14 - utente entrato in index
+LOG: 05/10/2023 14:11:17 - utente entrato in index
+LOG: 05/10/2023 14:12:12 - utente entrato in index
+LOG: 05/10/2023 14:16:23 - utente entrato in index
+LOG: 05/10/2023 14:16:29 - utente entrato in dettaglio item 1
+LOG: 05/10/2023 14:17:10 - utente entrato in dettaglio item 1
+LOG: 05/10/2023 14:18:45 - utente entrato in dettaglio item 1
+LOG: 05/10/2023 14:18:59 - utente entrato in modifica elemento 1
+LOG: 05/10/2023 14:19:04 - utente prova a salvare Pizza 1 con id 1
+LOG: 05/10/2023 14:19:05 - utente salva Pizza 1 con id 1
+LOG: 05/10/2023 14:19:05 - utente entrato in index

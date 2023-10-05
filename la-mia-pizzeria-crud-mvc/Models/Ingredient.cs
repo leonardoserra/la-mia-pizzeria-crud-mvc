@@ -11,6 +11,6 @@ namespace la_mia_pizzeria_crud.Models
         [StringLength(30, ErrorMessage ="Massimo 30 caratteri")]
         public string Name { get; set; }
 
-        public List<Pizza> pizzas { get; set; }
+        public List<Pizza> Pizzas { get; set; }
     }
 }

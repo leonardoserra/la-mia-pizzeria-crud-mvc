@@ -1,9 +1,6 @@
 html {
   font-size: 14px;
 }
-._my-site-font-size {
-    font-size: 0.8rem;
-}
 @media (min-width: 768px) {
     html {
     font-size: 16px;
@@ -17,4 +14,13 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+/*MY RULES*/
+._my-admin-site-font-size {
+    font-size: 0.8rem;
+}
+
+._my-btn-standard-width {
+    width: 80px;
 }

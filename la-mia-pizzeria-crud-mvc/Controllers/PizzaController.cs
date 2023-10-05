@@ -83,6 +83,7 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente prova a creare {receivedData.Pizza.Name}");
 
+            //se validazione fallisce reinvio i dati alla vista
             if (!ModelState.IsValid)
             {
                 List<Category> categories = _db.Categories.ToList();
@@ -101,13 +102,24 @@ namespace la_mia_pizzeria_crud.Controllers
                 return View("Create", receivedData);
             }
 
-           
-            //default image se null
+            //se validazione passa scrivo in DB
+
+            //default image se null o ""
             if (receivedData.Pizza.ImagePath == null)
             {
                 receivedData.Pizza.ImagePath = "/img/default.png";
             }
-
+            //aggiungiamo ingredienti alla pizza creata nel db
+            receivedData.Pizza.Ingredients = new List<Ingredient>();
+            if(receivedData.SelectedIngredientsId != null)
+            {
+                foreach(string ingredientsId in receivedData.SelectedIngredientsId)
+                {
+                    int selectedIngredientId = int.Parse(ingredientsId);
+                    Ingredient? ingredientToAdd = _db.Ingredients.Where(ingredient => ingredient.Id == selectedIngredientId).FirstOrDefault();
+                    receivedData.Pizza.Ingredients.Add(ingredientToAdd);
+                }
+            }
             _db.Pizzas.Add(receivedData.Pizza);
             _db.SaveChanges();
             _logger.WriteLog($"utente ha creato {receivedData.Pizza.Name}");

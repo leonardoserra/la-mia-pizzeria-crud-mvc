@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using la_mia_pizzeria_crud.CustomLoggers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace la_mia_pizzeria_crud.Controllers
 {
@@ -61,8 +62,19 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente entrato in creazione");
             List<Category> categories = _db.Categories.ToList();
-            PizzaComplexModel sentData = new PizzaComplexModel {Pizza=new Pizza {ImagePath="" }, Categories=categories };
-            return View("Create", sentData);
+            List<Ingredient> allIngredients= _db.Ingredients.ToList();
+
+            List<SelectListItem> ingredientsToSend = new();
+            foreach(Ingredient ingredient in allIngredients)
+            {
+                ingredientsToSend.Add(new SelectListItem { Text = ingredient.Name, Value = ingredient.Id.ToString() });
+            }
+            PizzaComplexModel dataToSend = new PizzaComplexModel {
+                Pizza = new Pizza {ImagePath = "" },
+                Categories = categories, 
+                Ingredients = ingredientsToSend 
+            };
+            return View("Create", dataToSend);
         }
 
         [HttpPost]

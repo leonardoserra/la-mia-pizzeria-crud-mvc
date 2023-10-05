@@ -37,9 +37,10 @@
             <input asp-for="Pizza.ImagePath" type="text" class="form-control" id="ImagePath">
             <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
         </div>
+        @*SELECT CATEGORY*@
         <div class="mb-3">
             <label asp-for="Pizza.CategoryId" class="form-label">Categoria</label>
-            <select class="form-select" asp-for="Pizza.CategoryId" rows="10" class="d-block w-100">
+            <select class="form-select d-block w-100" asp-for="Pizza.CategoryId" rows="10">
 
                 <option selected value="">Assegna una categoria..</option>
                 @foreach(Category category in Model.Categories)
@@ -50,6 +51,16 @@
             </select>
             <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
 
+        </div>
+        @*SELECT MULTIPLA INGREDIENTS*@
+        <div>
+            <label asp-for="SelectedIngredientsId" class="form-label">Seleziona gli Ingredienti (tieni premuto CTRL e selezionane piu di uno alla volta) :</label>
+            <select asp-for="SelectedIngredientsId" 
+                    multiselect="multiselect" 
+                    rows="5" 
+                    class="form-select d-block w-100"
+                    asp-items=@Model.Ingredients>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Crea Pizza</button>
     </form>

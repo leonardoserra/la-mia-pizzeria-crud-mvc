@@ -1,5 +1,6 @@
 using la_mia_pizzeria_crud.Database;
 using la_mia_pizzeria_crud.CustomLoggers;
+using la_mia_pizzeria_crud.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

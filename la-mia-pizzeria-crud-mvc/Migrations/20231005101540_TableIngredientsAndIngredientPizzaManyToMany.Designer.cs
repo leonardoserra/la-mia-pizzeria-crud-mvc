@@ -12,7 +12,7 @@ using la_mia_pizzeria_crud.Database;
 namespace la_mia_pizzeria_crud.Migrations
 {
     [DbContext(typeof(PizzeriaContext))]
-    [Migration("20231005101433_TableIngredientsAndIngredientPizzaManyToMany")]
+    [Migration("20231005101540_TableIngredientsAndIngredientPizzaManyToMany")]
     partial class TableIngredientsAndIngredientPizzaManyToMany
     {
         /// <inheritdoc />

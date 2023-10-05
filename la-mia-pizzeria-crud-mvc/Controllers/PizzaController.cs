@@ -180,13 +180,25 @@ namespace la_mia_pizzeria_crud.Controllers
                 receivedData.Ingredients = ingredientsToSend;
                 return View("Update", receivedData);
             }
+
+            //imposto ImagePath default se null o ""
             if (receivedData.Pizza.ImagePath == null || receivedData.Pizza.ImagePath == "")
                 receivedData.Pizza.ImagePath = "/img/default.png";
 
-            Pizza? pizzaToUpdate = _db.Pizzas.Find(id);
+            //scriviamo in DB
+            Pizza? pizzaToUpdate = _db.Pizzas.Include(pizza=>pizza.Category).Include(pizza=>pizza.Ingredients).Where(pizza=>pizza.Id == id).FirstOrDefault();
             if (pizzaToUpdate == null)
                 return View("Error");
 
+            pizzaToUpdate.Ingredients = new List<Ingredient>();
+            if (receivedData.SelectedIngredientsId != null)
+            {
+                foreach (string ingredientId in receivedData.SelectedIngredientsId) {
+                    Ingredient? ingredientToAdd = _db.Ingredients.Where(ingredient => ingredient.Id == int.Parse(ingredientId)).FirstOrDefault();
+                    if(ingredientToAdd != null) 
+                    pizzaToUpdate.Ingredients.Add(ingredientToAdd); 
+                }
+            }
             EntityEntry<Pizza> updatedPizza = _db.Entry(pizzaToUpdate);
             updatedPizza.CurrentValues.SetValues(receivedData.Pizza);
             

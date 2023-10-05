@@ -45,4 +45,11 @@ Dobbiamo quindi predisporre tutto il codice necessario per poter collegare una c
 1. Tramite migration dobbiamo creare la tabella per le categorie. Popoliamola a mano con i valori elencati precedentemente.  
 2. Aggiungiamo poi l’informazione della categoria nelle varie pagine :  
 > - nei dettagli di una singola pizza (nell’admin) mostrare la sua categoria  
-> - quando si crea/modifica una pizza si deve poter selezionare anche la sua categoria  
+> - quando si crea/modifica una pizza si deve poter selezionare anche la sua categoria
+> - 
+# la-mia-pizzeria-crud-mvc PARTE 5  
+  
+Oggi sviluppiamo un’altra importante funzionalità: aggiungiamo gli ingredienti alle nostre pizze.  
+- 1. Relazione: Una pizza può avere più ingredienti, e un ingrediente può essere presente in più pizze.  
+- 2. Creiamo quindi il Model necessario e la migration.  
+- 3. Aggiungiamo poi il codice al controller (e alle view) per la gestione degli ingredienti quando creiamo, modifichiamo o visualizziamo una pizza.  

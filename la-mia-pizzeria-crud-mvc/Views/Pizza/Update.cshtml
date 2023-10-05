@@ -58,6 +58,16 @@
             <span asp-validation-for="Pizza.CategoryId" class="text-danger"></span>
 
         </div>
+        @*SELECT MULTIPLA INGREDIENTS*@
+        <div>
+            <label asp-for="SelectedIngredientsId" class="form-label">Seleziona gli Ingredienti (tieni premuto CTRL e selezionane piu di uno alla volta) :</label>
+            <select asp-for="SelectedIngredientsId"
+                    multiselect="multiselect"
+                    rows="5"
+                    class="form-select d-block w-100"
+                    asp-items=@Model.Ingredients>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Salva Modifiche</button>
     </form>
 </div>

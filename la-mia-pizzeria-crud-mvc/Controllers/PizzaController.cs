@@ -131,15 +131,28 @@ namespace la_mia_pizzeria_crud.Controllers
         {
             _logger.WriteLog($"utente entrato in modifica elemento {id}");
 
-            Pizza? pizzaToUpdate = _db.Pizzas.Include(pizza => pizza.Category).Where(pizza=>pizza.Id == id).FirstOrDefault();
+            Pizza? pizzaToUpdate = _db.Pizzas.Include(pizza => pizza.Category).Include(pizza=>pizza.Ingredients).Where(pizza=>pizza.Id == id).FirstOrDefault();
+            
             if(pizzaToUpdate == null)
                 return View("Error");
-            List<Category> categories = _db.Categories.ToList();
 
+            //se img è default mostrami input vuoto
             if (pizzaToUpdate.ImagePath == "/img/default.png")
                 pizzaToUpdate.ImagePath = "";
+            List<Category> categories = _db.Categories.ToList();
+            List<Ingredient> ingredients = _db.Ingredients.ToList();
+            List<SelectListItem> ingredientsToSend = new List<SelectListItem>();
+            foreach(Ingredient ingredient in ingredients)
+            {
+                ingredientsToSend.Add(new SelectListItem
+                {
+                    Text = ingredient.Name,
+                    Value = ingredient.Id.ToString(),
+                    Selected = pizzaToUpdate.Ingredients.Any(selectedIngredient => selectedIngredient.Id == ingredient.Id)
+                });
+            }
 
-            PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories };
+            PizzaComplexModel dataToSent = new PizzaComplexModel { Pizza = pizzaToUpdate, Categories = categories, Ingredients = ingredientsToSend };
             return View("Update", dataToSent);
         }
 

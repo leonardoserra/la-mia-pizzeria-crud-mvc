@@ -36,9 +36,20 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+
+/*string pattern = "";
+if (User.IsInRole("ADMIN"))
+{
+    pattern = "Admin/_Layout";
+}
+else
+{
+    pattern = "User/_Layout";
+}*/
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=UserIndex}/{id?}");
 
 app.MapRazorPages();
 

@@ -20,11 +20,14 @@ namespace la_mia_pizzeria_crud.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -103,11 +106,8 @@ namespace la_mia_pizzeria_crud.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            
             returnUrl ??= Url.Content("~/");
-            
-            
-
-
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             if (ModelState.IsValid)
@@ -117,15 +117,20 @@ namespace la_mia_pizzeria_crud.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    if (User.IsInRole("ADMIN"))
+                    
+                    IdentityUser user = await _userManager.FindByEmailAsync(Input.Email);
+                    if (user != null)
                     {
-                        returnUrl = Url.Action("Index", "Pizza");
+                        if (await _userManager.IsInRoleAsync(user, "ADMIN"))
+                        {
+                            returnUrl = Url.Action("Index", "Pizza");
+                        }
+                        else
+                        {
+                            returnUrl = Url.Action("UserIndex", "Home");
+                        }
                     }
-                    else
-                    {
-                        returnUrl = Url.Action("UserIndex", "Home");
-
-                    }
+                    
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

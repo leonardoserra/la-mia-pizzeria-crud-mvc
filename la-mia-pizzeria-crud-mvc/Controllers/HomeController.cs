@@ -21,7 +21,11 @@ namespace la_mia_pizzeria_crud.Controllers
 
         public IActionResult UserIndex()
         {
-            List<Pizza> pizzas = new List<Pizza>();
+            if (User.IsInRole("ADMIN"))
+            {
+                return Redirect("/Pizza/Index");
+            }
+                List<Pizza> pizzas = new List<Pizza>();
             try
             {
                 using (PizzeriaContext db = new PizzeriaContext())

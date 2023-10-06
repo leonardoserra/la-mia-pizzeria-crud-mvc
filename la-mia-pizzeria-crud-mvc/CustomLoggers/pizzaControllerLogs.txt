@@ -405,3 +405,10 @@ LOG: 06/10/2023 12:02:21 - utente entrato in index
 LOG: 06/10/2023 12:02:27 - utente entrato in modifica elemento 1
 LOG: 06/10/2023 12:02:29 - utente entrato in index
 LOG: 06/10/2023 12:22:57 - utente entrato in index
+LOG: 06/10/2023 12:29:51 - utente entrato in index
+LOG: 06/10/2023 12:30:16 - utente entrato in index
+LOG: 06/10/2023 12:31:10 - utente entrato in index
+LOG: 06/10/2023 12:32:49 - utente entrato in index
+LOG: 06/10/2023 12:33:32 - utente entrato in index
+LOG: 06/10/2023 12:33:33 - utente entrato in index
+LOG: 06/10/2023 12:44:25 - utente entrato in index

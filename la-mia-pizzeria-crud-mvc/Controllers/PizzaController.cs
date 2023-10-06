@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using la_mia_pizzeria_crud.CustomLoggers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace la_mia_pizzeria_crud.Controllers
 {
+    [Authorize(Roles ="ADMIN,USER")]
     public class PizzaController : Controller
     {   
         private PizzeriaContext _db;
@@ -19,6 +21,9 @@ namespace la_mia_pizzeria_crud.Controllers
             _db = db;
             _logger = logger;
         }
+
+
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Index()
         {
             _logger.WriteLog($"utente entrato in index");
@@ -58,6 +63,8 @@ namespace la_mia_pizzeria_crud.Controllers
 
         //CRUD
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
+
         public IActionResult Create()
         {
             _logger.WriteLog($"utente entrato in creazione");
@@ -77,7 +84,10 @@ namespace la_mia_pizzeria_crud.Controllers
             return View("Create", dataToSend);
         }
 
+        
+
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzaComplexModel receivedData)
         {
@@ -126,7 +136,10 @@ namespace la_mia_pizzeria_crud.Controllers
 
             return RedirectToAction("Index");
         }
+
+
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Update(int id)
         {
             _logger.WriteLog($"utente entrato in modifica elemento {id}");
@@ -157,6 +170,7 @@ namespace la_mia_pizzeria_crud.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, PizzaComplexModel receivedData)
         {
@@ -207,7 +221,9 @@ namespace la_mia_pizzeria_crud.Controllers
 
             return RedirectToAction("Index");
         }
+
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
@@ -215,13 +231,11 @@ namespace la_mia_pizzeria_crud.Controllers
             if (pizzaToDelete == null)
                 return View("Error");
                
-               
             _db.Pizzas.Remove(pizzaToDelete);
             _db.SaveChanges();
             _logger.WriteLog($"utente ha eliminato {pizzaToDelete.Name} con id {id}");
 
             return RedirectToAction("Index");
-            
         }
     }
 }

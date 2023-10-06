@@ -62,18 +62,7 @@
     <div class="container-fluid mt-5 pt-3 bg-body-tertiary">
         <partial name="_CookieConsentPartial" optional />
         <main role="main" class="pb-1">
-            @* @if (User.IsInRole("ADMIN") || User.IsInRole(""))
-            {
-                 @RenderSection("AdminLayout", required: false) 
-                @RenderBody()
-
-            }
-            else if (User.IsInRole("USER"))
-            {
-                 @RenderSection("UserLayout", required: false) 
-                @RenderBody()
-
-            }*@
+          
             @RenderBody()
 
         </main>

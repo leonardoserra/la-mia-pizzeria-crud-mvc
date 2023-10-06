@@ -2,7 +2,6 @@
     Layout = "User/_Layout";
 }
 @model List<Pizza>
-
 @if(Model.Count == 0)
 {
     <h2>Nessuna Pizza in Pizzeria, sono quasi pronte....</h2>
@@ -13,10 +12,16 @@ else
 <div class="album py-5 bg-body-tertiary">
    
     <div class="row my-3">
-        <div class="col-12">
+        <div class="col-12 mt-2">
             <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
                 CARRELLO
             </button>
+                @if (User.IsInRole("ADMIN"))
+                {
+                    <a class="navbar-brand" href="@Url.Action("Index","Pizza")">
+                        <button class="btn btn-primary">Gestione Pizze</button>
+                    </a>
+                }
         </div>
     </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

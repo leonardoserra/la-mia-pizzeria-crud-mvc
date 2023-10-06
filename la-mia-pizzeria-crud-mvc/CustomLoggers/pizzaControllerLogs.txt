@@ -404,3 +404,4 @@ LOG: 06/10/2023 12:01:54 - utente entrato in modifica elemento 1
 LOG: 06/10/2023 12:02:21 - utente entrato in index
 LOG: 06/10/2023 12:02:27 - utente entrato in modifica elemento 1
 LOG: 06/10/2023 12:02:29 - utente entrato in index
+LOG: 06/10/2023 12:22:57 - utente entrato in index

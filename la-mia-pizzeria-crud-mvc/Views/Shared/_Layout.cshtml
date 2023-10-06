@@ -1,5 +1,6 @@
 @using Microsoft.AspNetCore.Hosting
 @using Microsoft.AspNetCore.Mvc.ViewEngines
+@using Microsoft.AspNetCore.Mvc.Razor
 @inject IWebHostEnvironment Environment
 @inject ICompositeViewEngine Engine
 <!DOCTYPE html>
@@ -18,14 +19,23 @@
               integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"
               asp-fallback-href="~/Identity/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/Identity/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="C:\Users\leoni\source\repos\la-mia-pizzeria-crud-mvc\la-mia-pizzeria-crud-mvc\wwwroot\css\site.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="@Url.Action("Index","Pizza")">Leonardo's Pizzeria</a>
+                @if (User.IsInRole("ADMIN"))
+                {
+                    <a class="navbar-brand" href="@Url.Action("Index","Pizza")">Leonardo's Pizzeria</a>
+
+                }
+                else if (User.IsInRole("USER"))
+                {
+                    <a class="navbar-brand" href="@Url.Action("UserIndex","Home")">Leonardo's Pizzeria</a>
+
+                }
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,10 +59,23 @@
         </nav>
     </header>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 pt-3 bg-body-tertiary">
         <partial name="_CookieConsentPartial" optional />
         <main role="main" class="pb-1">
+            @* @if (User.IsInRole("ADMIN") || User.IsInRole(""))
+            {
+                 @RenderSection("AdminLayout", required: false) 
+                @RenderBody()
+
+            }
+            else if (User.IsInRole("USER"))
+            {
+                 @RenderSection("UserLayout", required: false) 
+                @RenderBody()
+
+            }*@
             @RenderBody()
+
         </main>
     </div>
     <footer class="footer border-top pl-3 text-muted">

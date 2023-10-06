@@ -4,66 +4,66 @@
 @model PizzaComplexModel
 
 
-<div class="container mt-5 rosso">
+
     
-    @*BUTTON OFFCANVAS*@
-    <div class="row pt-3">
-        <div class="col-12 ">
-            <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
-                Gestisci la tua pagina
-            </button>
-        </div>
+@*BUTTON OFFCANVAS*@
+<div class="row pt-3">
+    <div class="col-12 ">
+        <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasManagePizza" aria-controls="offcanvasManagePizza">
+            Gestisci la tua pagina
+        </button>
     </div>
-
-    <form asp-controller="Pizza" asp-action="Create" method="post">
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            <label asp-for="Pizza.Name" class="form-label">Nome</label>
-            <input asp-for="Pizza.Name" type="text" class="form-control" id="Name">
-            <span asp-validation-for="Pizza.Name" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Pizza.Description" class="form-label">Descrizione</label>
-            <input asp-for="Pizza.Description" type="text" class="form-control" id="Description">
-            <span asp-validation-for="Pizza.Description" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Pizza.Price" class="form-label">Prezzo</label>
-            <input asp-for="Pizza.Price" type="text" class="form-control" id="Price">
-            <span asp-validation-for="Pizza.Price" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Pizza.ImagePath" class="form-label">Link immagine</label>
-            <input asp-for="Pizza.ImagePath" type="text" class="form-control" id="ImagePath">
-            <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
-        </div>
-        @*SELECT CATEGORY*@
-        <div class="mb-3">
-            <label asp-for="Pizza.CategoryId" class="form-label">Categoria</label>
-            <select class="form-select d-block w-100" asp-for="Pizza.CategoryId" rows="10">
-
-                <option selected value="">Assegna una categoria..</option>
-                @foreach(Category category in Model.Categories)
-                {
-                    <option value="@category.Id">@category.Name</option>
-                }
-
-            </select>
-            <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
-
-        </div>
-        @*SELECT MULTIPLA INGREDIENTS*@
-        <div>
-            <label asp-for="SelectedIngredientsId" class="form-label">Seleziona gli Ingredienti (tieni premuto CTRL e selezionane piu di uno alla volta) :</label>
-            <select asp-for="SelectedIngredientsId" 
-                    multiselect="multiselect" 
-                    rows="5" 
-                    class="form-select d-block w-100"
-                    asp-items=@Model.Ingredients>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Crea Pizza</button>
-    </form>
 </div>
+
+<form asp-controller="Pizza" asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <label asp-for="Pizza.Name" class="form-label">Nome</label>
+        <input asp-for="Pizza.Name" type="text" class="form-control" id="Name">
+        <span asp-validation-for="Pizza.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pizza.Description" class="form-label">Descrizione</label>
+        <input asp-for="Pizza.Description" type="text" class="form-control" id="Description">
+        <span asp-validation-for="Pizza.Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pizza.Price" class="form-label">Prezzo</label>
+        <input asp-for="Pizza.Price" type="text" class="form-control" id="Price">
+        <span asp-validation-for="Pizza.Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pizza.ImagePath" class="form-label">Link immagine</label>
+        <input asp-for="Pizza.ImagePath" type="text" class="form-control" id="ImagePath">
+        <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
+    </div>
+    @*SELECT CATEGORY*@
+    <div class="mb-3">
+        <label asp-for="Pizza.CategoryId" class="form-label">Categoria</label>
+        <select class="form-select d-block w-100" asp-for="Pizza.CategoryId" rows="10">
+
+            <option selected value="">Assegna una categoria..</option>
+            @foreach(Category category in Model.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+
+        </select>
+        <span asp-validation-for="Pizza.ImagePath" class="text-danger"></span>
+
+    </div>
+    @*SELECT MULTIPLA INGREDIENTS*@
+    <div>
+        <label asp-for="SelectedIngredientsId" class="form-label">Seleziona gli Ingredienti (tieni premuto CTRL e selezionane piu di uno alla volta) :</label>
+        <select asp-for="SelectedIngredientsId" 
+                multiselect="multiselect" 
+                rows="5" 
+                class="form-select d-block w-100"
+                asp-items=@Model.Ingredients>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Crea Pizza</button>
+</form>
+
 
 

@@ -104,6 +104,9 @@ namespace la_mia_pizzeria_crud.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
+            
+            
+
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -114,6 +117,15 @@ namespace la_mia_pizzeria_crud.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    if (User.IsInRole("ADMIN"))
+                    {
+                        returnUrl = Url.Action("Index", "Pizza");
+                    }
+                    else
+                    {
+                        returnUrl = Url.Action("UserIndex", "Home");
+
+                    }
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

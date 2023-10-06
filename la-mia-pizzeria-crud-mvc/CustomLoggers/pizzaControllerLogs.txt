@@ -395,3 +395,12 @@ LOG: 05/10/2023 17:25:13 - utente prova a salvare Pizza al Castoro con id 15
 LOG: 05/10/2023 17:25:20 - utente prova a salvare Pizza al Castoro con id 15
 LOG: 05/10/2023 17:25:20 - utente salva Pizza al Castoro con id 15
 LOG: 05/10/2023 17:25:20 - utente entrato in index
+LOG: 06/10/2023 11:49:42 - utente entrato in index
+LOG: 06/10/2023 11:50:18 - utente entrato in creazione
+LOG: 06/10/2023 11:50:25 - utente entrato in index
+LOG: 06/10/2023 11:50:26 - utente entrato in modifica elemento 1
+LOG: 06/10/2023 11:50:50 - utente entrato in index
+LOG: 06/10/2023 12:01:54 - utente entrato in modifica elemento 1
+LOG: 06/10/2023 12:02:21 - utente entrato in index
+LOG: 06/10/2023 12:02:27 - utente entrato in modifica elemento 1
+LOG: 06/10/2023 12:02:29 - utente entrato in index
